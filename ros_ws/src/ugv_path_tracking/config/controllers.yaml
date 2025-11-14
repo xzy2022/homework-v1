@@ -1,0 +1,18 @@
+pure_pursuit:
+  wheel_base: 2.5
+  min_lookahead: 2.5
+  max_lookahead: 15.0
+  lookahead_gain: 0.6
+  throttle_gain: 0.8
+  brake_gain: 0.5
+  max_steer_angle: 0.6
+  feedforward_velocity: 2.0
+
+stanley:
+  wheel_base: 2.5
+  gain: 1.0
+  softening_speed: 0.4
+  throttle_gain: 0.6
+  brake_gain: 0.5
+  max_steer_angle: 0.6
+  min_target_speed: 1.0

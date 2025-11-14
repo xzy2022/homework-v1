@@ -1,0 +1,8 @@
+std_msgs/Header header
+string controller_name
+float64 rms_lateral_error
+float64 rms_heading_error
+float64 mean_velocity
+float64 control_effort
+float64 smoothness
+float64 lap_time

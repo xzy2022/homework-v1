@@ -1,0 +1,7 @@
+wheel_base: 2.5
+gain: 1.0
+softening_speed: 0.4
+throttle_gain: 0.6
+brake_gain: 0.5
+max_steer_angle: 0.6
+min_target_speed: 1.0

@@ -1,0 +1,8 @@
+wheel_base: 2.5
+min_lookahead: 2.5
+max_lookahead: 15.0
+lookahead_gain: 0.6
+throttle_gain: 0.8
+brake_gain: 0.5
+max_steer_angle: 0.6
+feedforward_velocity: 2.0

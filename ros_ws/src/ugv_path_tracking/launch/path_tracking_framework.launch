@@ -1,0 +1,34 @@
+<launch>
+  <arg name="use_sim_time" default="false"/>
+  <arg name="path_type" default="circle"/>
+  <arg name="trajectory_frame" default="map"/>
+
+  <param name="use_sim_time" value="$(arg use_sim_time)"/>
+
+  <node pkg="ugv_path_tracking" type="global_path_node" name="global_path" output="screen">
+    <param name="path_type" value="$(arg path_type)"/>
+    <param name="trajectory_frame" value="$(arg trajectory_frame)"/>
+  </node>
+
+  <group ns="pure_pursuit">
+    <rosparam command="load" file="$(find ugv_path_tracking)/config/pure_pursuit.yaml"/>
+    <node pkg="ugv_path_tracking" type="pure_pursuit_node" name="controller" output="screen">
+      <param name="command_topic" value="/vehicle/pure_pursuit_cmd"/>
+    </node>
+    <node pkg="ugv_path_tracking" type="tracking_evaluator_node" name="evaluator" output="screen">
+      <param name="command_topic" value="/vehicle/pure_pursuit_cmd"/>
+      <param name="controller_name" value="pure_pursuit"/>
+    </node>
+  </group>
+
+  <group ns="stanley">
+    <rosparam command="load" file="$(find ugv_path_tracking)/config/stanley.yaml"/>
+    <node pkg="ugv_path_tracking" type="stanley_node" name="controller" output="screen">
+      <param name="command_topic" value="/vehicle/stanley_cmd"/>
+    </node>
+    <node pkg="ugv_path_tracking" type="tracking_evaluator_node" name="evaluator" output="screen">
+      <param name="command_topic" value="/vehicle/stanley_cmd"/>
+      <param name="controller_name" value="stanley"/>
+    </node>
+  </group>
+</launch>
